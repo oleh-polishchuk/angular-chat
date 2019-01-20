@@ -1,11 +1,23 @@
-<p>
-  home works!
-</p>
-
-<button type="button" (click)="createChat()">Create New Chat</button>
-
-<ul>
-  <li *ngFor="let chat of userChats$ | async">
-    <a [routerLink]="'chats/' + chat.id">{{ chat.id }} - {{ chat.messages.length }} Messages</a>
-  </li>
-</ul>
+<section class="home">
+  <div class="home__container">
+    <div class="home__header">
+      <h1 class="home__title">Welcome to Angular Chat</h1>
+    </div>
+    <div class="home__body">
+      <div class="home__button-group">
+        <button class="home__create-chat btn btn-success"
+                type="button"
+                (click)="createChat()">Create New Chat</button>
+      </div>
+      <h2 class="home__sub-title">All Chats</h2>
+      <ul class="home__chats">
+        <li class="home__chats-item" *ngFor="let chat of userChats$ | async">
+          <a class="home__chats-link"
+             [routerLink]="'chats/' + chat.id">
+            {{ chat.id }} - {{ chat.messages.length }} Messages
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
