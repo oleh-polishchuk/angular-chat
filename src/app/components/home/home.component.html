@@ -1,3 +1,11 @@
 <p>
   home works!
 </p>
+
+<button type="button" (click)="createChat()">Create New Chat</button>
+
+<ul>
+  <li *ngFor="let chat of userChats$ | async">
+    <a [routerLink]="'chats/' + chat.id">{{ chat.id }} - {{ chat.messages ? chat.messages.length : 0 }} Messages</a>
+  </li>
+</ul>
