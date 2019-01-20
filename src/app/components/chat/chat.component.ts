@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ChatService } from '../shared/services/chat-service.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-chat',
@@ -7,9 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatComponent implements OnInit {
 
-  constructor() { }
+  chat$;
+  newMessage = '';
+
+  constructor(
+    private chatService: ChatService,
+    private route: ActivatedRoute,
+  ) {
+  }
 
   ngOnInit() {
+    const chatId = this.route.snapshot.paramMap.get('id');
+    this.chat$ = this.chatService.getById(chatId);
+  }
+
+  submit(chatId) {
+    if (!this.newMessage) {
+      return;
+    }
+
+    this.chatService.sendMessage(chatId, this.newMessage);
+    this.newMessage = '';
   }
 
 }

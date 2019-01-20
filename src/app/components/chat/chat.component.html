@@ -1,3 +1,16 @@
-<p>
-  chat works!
-</p>
+<ng-container *ngIf="chat$ | async as chat">
+  <a routerLink="/">Back</a>
+  <div>http://localhost:4200/chats/{{ chat.id }}</div>
+
+  <div *ngFor="let message of chat.messages">
+    <small>Date: {{ message.createdAt }}</small>
+    <div>Message: {{ message.content }}</div>
+    <hr>
+  </div>
+
+  <div>
+    <input type="text" [(ngModel)]="newMessage" (keydown.enter)="submit(chat.id)">
+    <button type="button" (click)="submit(chat.id)" [disabled]="!newMessage.length">Send</button>
+  </div>
+
+</ng-container>
