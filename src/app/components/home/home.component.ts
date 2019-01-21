@@ -10,10 +10,7 @@ export class HomeComponent implements OnInit {
 
   userChats$;
 
-  constructor(
-    private chatService: ChatService
-  ) {
-  }
+  constructor(private chatService: ChatService) {}
 
   ngOnInit() {
     this.userChats$ = this.chatService.getUserChats();

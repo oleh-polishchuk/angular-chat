@@ -23,8 +23,7 @@ export class ChatService {
   constructor(
     private angularFireDatabase: AngularFireDatabase,
     private router: Router,
-  ) {
-  }
+  ) {}
 
   async create() {
     const uid = 'UID123456789';
@@ -69,9 +68,7 @@ export class ChatService {
           return items.map(item => {
             const data = item.payload.val() as Chat;
             data.messages = Object.values(data.messages) as Message[];
-            // TODO: use UID instead of key
             const id = item.key;
-
             return { id, ...data };
           });
         })

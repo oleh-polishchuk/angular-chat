@@ -15,8 +15,7 @@ export class ChatComponent implements OnInit {
   constructor(
     private chatService: ChatService,
     private route: ActivatedRoute,
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     const chatId = this.route.snapshot.paramMap.get('id');
@@ -42,5 +41,4 @@ export class ChatComponent implements OnInit {
       });
     }
   }
-
 }
