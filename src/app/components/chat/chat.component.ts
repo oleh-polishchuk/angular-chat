@@ -21,6 +21,7 @@ export class ChatComponent implements OnInit {
   ngOnInit() {
     const chatId = this.route.snapshot.paramMap.get('id');
     this.chat$ = this.chatService.getById(chatId);
+    this.chat$.subscribe(value => this.scrollDown());
   }
 
   submit(chatId) {
@@ -30,6 +31,16 @@ export class ChatComponent implements OnInit {
 
     this.chatService.sendMessage(chatId, this.newMessage);
     this.newMessage = '';
+    this.scrollDown();
+  }
+
+  scrollDown() {
+    const element = document.querySelector('.chat__messages');
+    if (element) {
+      setTimeout(() => {
+        element.scrollBy(0, element.scrollHeight * 2);
+      });
+    }
   }
 
 }

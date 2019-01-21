@@ -2,31 +2,51 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 100%;
 
   &__container {
     display: flex;
     flex-direction: column;
-
     align-items: center;
     justify-content: center;
     width: 100%;
     max-width: 500px;
   }
 
-  &__panel {
+  &__header {
+    margin: 25px 0 25px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 0 30px;
+  }
+
+  &__body {
+    max-width: 440px;
     width: 100%;
   }
 
-  &__back {}
+  &__footer {
+    margin: 25px 0 25px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 0 30px;
+  }
 
-  &__info {}
+  &__messages {
+    border-radius: 3px;
+    box-shadow: 0 0 1px 0 rgba(0,0,0,0.15);
+    max-height: 500px;
+    overflow-y: scroll;
+  }
+
+  &__message {}
 }
 
 .form {
-  padding: 0 30px;
-
   display: flex;
   align-items: center;
   justify-content: center;

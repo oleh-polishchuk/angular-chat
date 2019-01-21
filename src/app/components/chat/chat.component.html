@@ -1,36 +1,31 @@
 <ng-container *ngIf="chat$ | async as chat">
   <section class="chat">
     <div class="chat__container">
-      <div class="chat__panel">
+      <div class="chat__header">
         <a class="chat__back btn btn-info" routerLink="/">Back</a>
       </div>
-      <div class="chat__info">http://localhost:4200/chats/{{ chat.id }}</div>
-
-      <hr>
-
-      <ul class="list-group">
-        <li class="list-group-item" *ngFor="let message of chat.messages">
-          <small>Date: {{ message.createdAt | date: 'short' }}</small>
-          <div>Message: {{ message.content }}</div>
-        </li>
-      </ul>
-
-      <hr>
-
-      <section class="form form-inline">
-        <div class="form__form-group form-group">
-          <input class="form__input form-control"
-                 type="text"
-                 [(ngModel)]="newMessage"
-                 (keydown.enter)="submit(chat.id)">
-        </div>
-        <button class="form__submit btn btn-success"
-                type="button"
-                (click)="submit(chat.id)"
-                [disabled]="!newMessage.length">Send</button>
-      </section>
-
+      <div class="chat__body">
+        <ul class="chat__messages list-group">
+          <li class="chat__message list-group-item" *ngFor="let message of chat.messages">
+            <small>Date: {{ message.createdAt | date: 'short' }}</small>
+            <div>{{ message.content }}</div>
+          </li>
+        </ul>
+      </div>
+      <div class="chat__footer">
+        <section class="form form-inline">
+          <div class="form__form-group form-group">
+            <input class="form__input form-control"
+                   type="text"
+                   [(ngModel)]="newMessage"
+                   (keydown.enter)="submit(chat.id)">
+          </div>
+          <button class="form__submit btn btn-success"
+                  type="button"
+                  (click)="submit(chat.id)"
+                  [disabled]="!newMessage.length">Send</button>
+        </section>
+      </div>
     </div>
   </section>
-
 </ng-container>
